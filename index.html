@@ -10,11 +10,11 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden; /* IMPORTANT: This stops the body scroll */
+      overflow: hidden; /* This stops the body scroll; the wrapper will handle it */
       background-color: #000;
     }
 
-    /* This new wrapper will handle the scrolling on mobile */
+    /* This wrapper is the key: it handles all scrolling for all devices */
     .scroll-wrapper {
       position: absolute;
       top: 0;
@@ -25,16 +25,15 @@
       -webkit-overflow-scrolling: touch; /* This makes scrolling smooth on iOS */
     }
 
-    /* Your original container for the Canva embed */
+    /* Your original container that sets the aspect ratio correctly for the desktop view */
     .canva-container {
       position: relative;
       width: 100%;
       height: 0;
-      /* This maintains the aspect ratio from your code */
-      padding-top: 449.7804%; 
+      padding-top: 449.7804%; /* This maintains the full height from your Canva design */
     }
 
-    /* The iframe itself */
+    /* The iframe sits inside the container */
     .canva-container iframe {
       position: absolute;
       width: 100%;
@@ -42,14 +41,12 @@
       top: 0;
       left: 0;
       border: none;
-      padding: 0;
-      margin: 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- The new scrolling wrapper -->
+  <!-- The scroll wrapper contains everything -->
   <div class="scroll-wrapper">
     <div class="canva-container">
       <iframe loading="lazy" 
