@@ -5,23 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ExpertForgeStudio</title>
   <style>
-    /* Ensures no extra space around the page and allows scrolling */
-    body {
+    /* Prevent the main page from scrolling and fill the screen */
+    html, body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden; /* Prevents horizontal scrollbars */
+      height: 100%;
+      overflow: hidden; /* IMPORTANT: This stops the body scroll */
+      background-color: #000;
     }
 
-    /* Main container for the Canva embed */
+    /* This new wrapper will handle the scrolling on mobile */
+    .scroll-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: auto; /* This enables vertical scrolling */
+      -webkit-overflow-scrolling: touch; /* This makes scrolling smooth on iOS */
+    }
+
+    /* Your original container for the Canva embed */
     .canva-container {
       position: relative;
       width: 100%;
       height: 0;
-      /* This is the aspect ratio trick from your code */
+      /* This maintains the aspect ratio from your code */
       padding-top: 449.7804%; 
-      
-      /* REMOVED overflow: hidden; which was stopping mobile scroll */
-      /* REMOVED margin-top and margin-bottom for a true full-screen look */
     }
 
     /* The iframe itself */
@@ -39,12 +49,15 @@
 </head>
 <body>
 
-  <div class="canva-container">
-    <iframe loading="lazy" 
-      src="https://www.canva.com/design/DAGz9qCpGfQ/BVeUB9BG1xWf77slLio8aw/view?embed" 
-      allowfullscreen="allowfullscreen" 
-      allow="fullscreen">
-    </iframe>
+  <!-- The new scrolling wrapper -->
+  <div class="scroll-wrapper">
+    <div class="canva-container">
+      <iframe loading="lazy" 
+        src="https://www.canva.com/design/DAGz9qCpGfQ/BVeUB9BG1xWf77slLio8aw/view?embed" 
+        allowfullscreen="allowfullscreen" 
+        allow="fullscreen">
+      </iframe>
+    </div>
   </div>
 
 </body>
